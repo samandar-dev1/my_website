@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Short Link Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #eef3f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    input {
+      padding: 10px;
+      width: 320px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 12px;
+    }
+
+    button {
+      padding: 10px 24px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Make a Short Link</h2>
+  <input type="text" id="originalLink" placeholder="Enter your long link">
+  <button onclick="makeShortLink()">Make Shorter</button>
+  <div class="result" id="shortLinkResult"></div>
+
+  <script>
+    function makeShortLink() {
+      const input = document.getElementById("originalLink");
+      const link = input.value.trim();
+
+      if (!link) {
+        alert("Please enter a link.");
+        return;
+      }
+
+      // Random ID yaratamiz (soxta short link uchun)
+      const randomId = Math.random().toString(36).substring(2, 8);
+      const shortLink = "https://smd.ly/" + randomId;
+
+      // Natijani ko‘rsatamiz
+      const resultDiv = document.getElementById("shortLinkResult");
+      resultDiv.innerHTML = `Short link: <a href="${link}" target="_blank">${shortLink}</a>`;
+    }
+  </script>
+
+</body>
+</html>
